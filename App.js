@@ -23,7 +23,19 @@ import Scan from './src/Scan';
 import Cart from './src/Cart';
 import History from './src/History';
 import Profile from './src/Profile';
+import * as Font from 'expo-font';
+
 export default class App extends React.Component {
+
+  componentDidMount() {
+    Font.loadAsync({
+      // 'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+      'bitter-bold': require('./assets/fonts/Bitter/Bitter-Bold.ttf'),
+      'bitter-italic': require('./assets/fonts/Bitter/Bitter-Italic.ttf'),
+      'bitter-regular': require('./assets/fonts/Bitter/Bitter-Regular.ttf'),
+    });
+  }
+
   render(){
       return (
              <AppContainer />
@@ -44,7 +56,8 @@ const HomeStackNavigator = createStackNavigator({
       return {
         headerTitle: "Home",
         headerTitleStyle: {
-          color: "white"
+          color: "white",
+          fontFamily: 'bitter-italic'
         },
         headerStyle: {
           backgroundColor: "#171941"
@@ -64,7 +77,7 @@ const HomeStackNavigator = createStackNavigator({
         ),
         headerRight: (
           <Icon
-            onPress={() => navigation.openDrawer()}
+            onPress={() => navigation.navigate("Scan")}
             name="ios-search"
             color="white"
             size={30}
@@ -83,7 +96,8 @@ const HomeStackNavigator = createStackNavigator({
           return {
             headerTitle: "Scan a Product" ,
             headerTitleStyle: {
-              color: "white"
+              color: "white",
+              fontFamily: 'bitter-italic'
             },
             headerStyle: {
               backgroundColor: "#171941"
@@ -120,7 +134,8 @@ const HomeStackNavigator = createStackNavigator({
           return {
             headerTitle: "Your added Products" ,
             headerTitleStyle: {
-              color: "white"
+              color: "white",
+              fontFamily: 'bitter-italic'
             },
             headerStyle: {
               backgroundColor: "#171941"
@@ -160,7 +175,8 @@ const HomeStackNavigator = createStackNavigator({
       return {
         headerTitle: "History" ,
         headerTitleStyle: {
-          color: "white"
+          color: "white",
+          fontFamily: 'bitter-italic'
         },
         headerStyle: {
           backgroundColor: "#171941"
@@ -192,198 +208,32 @@ const HomeStackNavigator = createStackNavigator({
     }
   } ,
 
-
-
-
-
-
-
-
-
-
-//   Category: {
-//     screen: Category,
-//     navigationOptions: ({ navigation }) => {
-//       return {
-//         headerTitle: "Doctor List" ,
-//         headerTitleStyle: {
-//           color: "white"
-//         },
-//         headerStyle: {
-//           backgroundColor: "#171941"
-//         },
-//         headerLeft: (
-//           <Icon
-//             onPress={() => navigation.openDrawer()}
-//             name="md-menu"
-//             color="white"
-//             size={30}
-//             style={{
-//               paddingLeft: 10
-//             }}
-//           />
-//         ),
-//         headerRight: (
-//           <Icon
-//             onPress={() => navigation.navigate("Home")}
-//             name="md-cart"
-//             color="white"
-//             size={30}
-//             style={{
-//               paddingRight: 10
-//             }}
-//           />
-//         )
-//       };
-//     }
-//   } ,
-
-  
-
-
-//   Detail: {
-//     screen: Detail,
-//     navigationOptions: ({ navigation }) => {
-//       return {
-//         headerTitleStyle: {
-//           color: "white"
-//         },
-//         headerStyle: {
-//           backgroundColor: "#171941"
-//         },
-//         headerTitle: "Book Appointment",
-//         headerLeft: null,
-//         headerRight: (
-//           <Icon
-//             onPress={() => navigation.navigate("Category")}
-//             name="ios-close"
-//             color="white"
-//             size={50}
-//             style={{
-//               paddingRight: 10
-//             }}
-//           />
-//         ),
-//         gesturesEnabled: false
-//       };
-//     }
-//   },
-
-//   // SlotPick: {
-//   //   screen: SlotPick,
-//   //   navigationOptions: ({ navigation }) => {
-//   //     return {
-//   //       headerTitleStyle: {
-//   //         color: "white"
-//   //       },
-//   //       headerStyle: {
-//   //         backgroundColor: "#5BBC9D"
-//   //       },
-//   //       headerTitle: navigation.state.params.date,
-//   //       headerLeft: null,
-//   //       headerRight: (
-//   //         <Icon
-//   //           onPress={() => navigation.navigate("Detail")}
-//   //           name="ios-skip-backward"
-//   //           color="white"
-//   //           size={30}
-//   //           style={{
-//   //             paddingRight: 10
-//   //           }}
-//   //         />
-//   //       ),
-//   //       gesturesEnabled: false
-//   //     };
-//   //   }
-//   // },
-//   Record: {
-//     screen: Record,
-//     navigationOptions: ({ navigation }) => {
-//       return {
-//         headerTitleStyle: {
-//           color: "white"
-//         },
-//         headerStyle: {
-//           backgroundColor: "#171941"
-//         },
-//         headerTitle: "Health Record",
-       
-//         headerLeft: null,
-//         headerLeft: (
-//           <Icon
-//             onPress={() => navigation.openDrawer()}
-//             name="md-menu"
-//             color="white"
-//             size={30}
-//             style={{
-//               paddingLeft: 10
-//             }}
-//           />
-//         ),
-//         headerRight: (
-//           <Icon
-//             onPress={() => navigation.navigate("Home")}
-//             name="ios-home"
-//             color="white"
-//             size={40}
-//             style={{
-//               paddingRight: 10
-//             }}
-//           />
-//         ),
-//         gesturesEnabled: false
-//       };
-//     }
-//   },
-  
-
-//  FAQ:{
-//   screen: FAQ,
-//   navigationOptions: ({ navigation }) => {
-//     return {
-//       headerTitleStyle: {
-//         color: "white" ,
-       
-//       },
-//       headerStyle: {
-//         backgroundColor: "#171941"
-//       },
-//       headerTitle: "FAQ" ,
-//       headerLeft: null,
-//       headerRight: (
-//         <Icon
-//           onPress={() => { navigation.navigate("Home")} }
-//           name="ios-close"
-//           color="white"
-//           size={50}
-//           style={{
-//             paddingRight: 10
-//           }}
-//         />
-//       ),
-//       gesturesEnabled: false
-//     };
-//   }
-
-//  } ,
-
-
  Profile:{
   screen: Profile ,
   navigationOptions: ({ navigation }) => {
     return {
       headerTitleStyle: {
         color: "white" ,
-       
-        fontWeight: 'bold'
+        // fontWeight: 'bold',
+        fontFamily: 'bitter-italic'
       },
       headerStyle: {
         backgroundColor: "#171941" ,
-       
-        
       },
       headerTitle: "Profile" ,
-      headerLeft: null,
+      headerLeft: null
+      // (
+      //   <Icon
+      //   onPress={() => navigation.openDrawer()}
+      //   name="md-menu"
+      //   color="white"
+      //   size={30}
+      //   style={{
+      //     paddingLeft: 10
+      //   }}
+      // />
+      // )
+      ,
       headerRight: (
         <Icon
           onPress={() => { navigation.navigate("Home")} }
