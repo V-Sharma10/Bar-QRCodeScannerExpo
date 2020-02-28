@@ -27,6 +27,7 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": ["READ_EXTERNAL_STORAGE","WRITE_EXTERNAL_STORAGE"],
       "package": "com.vsharma10.lowesScanner",
       "versionCode": 2
     },

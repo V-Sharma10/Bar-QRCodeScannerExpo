@@ -20,6 +20,9 @@ export default class Scanner extends Component {
             itemsArray:[]
             
         };
+
+        
+        
     }
     async componentDidMount(){
       const status = await Camera.requestPermissionsAsync();
@@ -33,19 +36,29 @@ export default class Scanner extends Component {
       })
     }
 
-    addItemsToCart = (obj)=>{
+    addItemsToCart =  (obj)=>{
+      // AsyncStorage.setItem('cart', JSON.stringify([]))
       console.log('req to add items to cart')
       console.log(obj)
+    //   AsyncStorage.getItem('cart')
+    //     .then(req => JSON.parse(req))
+    //   .then(json => {console.log('lkskdflkj'+json);
+    //   // console.log(json[0].id)
+
+    //   this.setState({itemsArray:json},()=>{
+    //       console.log(this.state)
+    //   })
+    // })
+    //   .catch(error => console.log('error!'));
       let arr = [...this.state.itemsArray,obj];
       this.setState({
         itemsArray:arr
       },()=>{
-        AsyncStorage.setItem('cart', JSON.stringify(this.state.itemsArray))
-      .then(json => console.log('success!'))
-      .catch(error => console.log('error!'));
+        // AsyncStorage.setItem('cart', JSON.stringify(this.state.itemsArray))
+        //   .then(json => console.log('success!'))
+        //   .catch(error => console.log('error!'));
 
-      })
-      console.log(arr);
+          })
       
 
     }
