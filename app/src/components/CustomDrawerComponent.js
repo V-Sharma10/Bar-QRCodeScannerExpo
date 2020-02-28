@@ -41,7 +41,7 @@ class CustomDrawerComponent extends Component {
 
 
 
-<TouchableOpacity 
+            <TouchableOpacity 
               onPress={() => {
                 this.props.navigation.closeDrawer();
                 this.props.navigation.navigate("Profile");

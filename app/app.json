@@ -27,7 +27,6 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions":["CAMERA"],
       "package": "com.vsharma10.lowesScanner",
       "versionCode": 2
     },
