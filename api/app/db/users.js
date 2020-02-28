@@ -8,8 +8,8 @@ const user = new Schema({
         unique: true
     },
     password: String,
-    private_key: String,
-    public_key: String
+    privateKey: String,
+    address: String
 }, 
 {strict: false});
 

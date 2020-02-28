@@ -1,6 +1,7 @@
 node_modules/**/*
 api/app/node_modules/*
 api/app/build/*
+**/automation/**
 .expo/*
 npm-debug.*
 *.jks

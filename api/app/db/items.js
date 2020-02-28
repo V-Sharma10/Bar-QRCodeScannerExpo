@@ -9,8 +9,11 @@ const item = new Schema({
     },
     unit_price:{
         type: Number
+    },
+    name:{
+        type: String
     }
 }, {strict: true});
-const model = mongoose.model("item", item);
 
+const model = mongoose.model("item", item);
 module.exports = model;

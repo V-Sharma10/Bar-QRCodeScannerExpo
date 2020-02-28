@@ -5,11 +5,12 @@ const items = require('../db/items');
 router.post('/', async (req,res) => {
     try{
         console.log("new item");
-        let { id, unit_price } = req.body;
-        const newItem = await items.create({id, unit_price});
+        let { id, unit_price, name } = req.body;
+        const newItem = await items.create({id, unit_price, name});
         res.status(201).json({
             data: newItem,
-            status: "success"
+            status: "success",
+            unique: true
         })
     }
     catch(e){

@@ -1,11 +1,16 @@
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
 const artifact = require('./build/contracts/supermarket');
-const instance = new web3.eth.Contract(artifact.abi, artifact.networks['5777'].address);
 
 module.exports = {
+    create_user: async function(){
+        
+    },
     make_purchase: async function(items, prices, qty, total, account, callback){
         try{
+            const networkId = await web3.eth.net.getId();
+            const instance = new web3.eth.Contract(artifact.abi, artifact.networks[networkId].address);
+
             const tx = await instance.methods.make_purchase(items, prices, qty, total).send({from: account, value: total});
             console.log(tx);
             return tx;
@@ -15,8 +20,24 @@ module.exports = {
             return "Error Occured!";
         }
     },
+    get_store: async function(){
+        try{
+            const networkId = await web3.eth.net.getId();
+            const instance = new web3.eth.Contract(artifact.abi, artifact.networks[networkId].address);
+
+            const result = await instance.methods.store().call();
+            console.log(result);
+        }
+        catch(e){
+            console.log(e);
+            return "Error Occured!";
+        }
+    },
     get_logs: async function(account){
         try{
+            const networkId = await web3.eth.net.getId();
+            const instance = new web3.eth.Contract(artifact.abi, artifact.networks[networkId].address);
+            
             let gEvents;
             await instance.getPastEvents('purchase_made', {fromBlock: 0}, (error, events) => { gEvents = events});
             const all_purchases = gEvents.map(event => {
