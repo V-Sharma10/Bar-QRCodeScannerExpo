@@ -6,6 +6,8 @@ const cors = require('cors');
 const contract_functions = require('./contract');
 const items = require('./routes/items');
 const users = require('./routes/users');
+const orders = require('./routes/orders');
+
 
 const app = express();
 
@@ -25,6 +27,7 @@ mongoose.connect(uri, {
 
 app.use('/items', items);
 app.use('/users', users);
+app.use('/orders', orders);
 
 app.listen(3000, () => {
     console.log("express listening on port 3000.");
