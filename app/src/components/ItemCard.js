@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, AsyncStorage } from "react-native";
+import { Button } from "native-base";
 
-function ItemCard(props) {
+import { Ionicons } from '@expo/vector-icons';
+class ItemCard extends Component {
+    constructor(props){
+        super(props)
+        this.state={
+            quantity:1,
+            id:this.props.id
+        }
+
+        console.log(this.props);
+    }
+    render(){
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container, this.props.style]}>
       <View style={styles.cardBody}>
         <View style={styles.bodyContent}>
-                <Text style={styles.titleStyle}>{props.name}</Text>
-  <Text style={styles.subtitleStyle}>₹ {props.unit_price}</Text>
+                <Text style={styles.titleStyle}>{this.props.name}</Text>
+  <Text style={styles.subtitleStyle}>₹ {this.props.unit_price}</Text>
         </View>
         <Image
           source={require("../../assets/lowes_icon.png")}
@@ -15,15 +27,69 @@ function ItemCard(props) {
         ></Image>
       </View>
       <View style={styles.actionBody}>
-        <TouchableOpacity style={styles.actionButton1}>
-          <Text style={styles.actionText1}>ACTION 1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.actionButton2}>
-          <Text style={styles.actionText2}>ACTION 2</Text>
-        </TouchableOpacity>
+          <View>
+        {/* <TouchableOpacity style={styles.actionButton1}> */}
+          <Text style={styles.actionText1}
+          onPress={()=>{
+              console.log('+');
+              this.setState({
+                  quantity:this.state.quantity+1
+              })
+          }}
+          >+</Text>
+        {/* </TouchableOpacity> */}
+        </View>
+          <View 
+          
+          >
+              <Text
+              style={{
+                // height: 36,
+                padding: 0,
+                fontSize:40
+              }}>
+                  {this.state.quantity}
+              </Text>
+          </View>
+              <View>
+        {/* <TouchableOpacity style={styles.actionButton2}> */}
+          <Text style={styles.actionText2}
+          onPress={()=>{
+            console.log('-');
+            if(this.state.quantity>=1)
+            this.setState({
+                quantity:this.state.quantity-1,
+            })
+        }}
+          >-</Text>
+        {/* </TouchableOpacity> */}
+        </View>
+        <View
+        style={{
+            marginLeft:50
+        }}
+        
+
+        >
+
+        <Ionicons
+        onPress={()=>{
+            console.log('Added to cart');
+            console.log(this.state)
+
+            this.props.addItemsArray(this.state)
+
+
+            alert(`Your Product has been added to cart.`)
+        }}
+        name="md-cart" size={60} color="green" />
+        
+     
+        </View>
+        
       </View>
     </View>
-  );
+  );}
 }
 
 const styles = StyleSheet.create({
@@ -67,29 +133,54 @@ const styles = StyleSheet.create({
     width: 120,
     height: 120,
     backgroundColor: "#ccc",
-    margin: 16
+    margin: 3
   },
   actionBody: {
+      flex:1,
     flexDirection: "row",
     padding: 8
   },
   actionButton1: {
-    height: 36,
-    padding: 8
+    height: 16,
+    padding: 8,
+    left:'auto',
+    textAlign:'center',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center'
   },
   actionText1: {
     color: "#000",
     opacity: 0.9,
-    fontSize: 14
+    fontSize: 40,
+    left:'auto',
+    textAlign:'center',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    paddingRight:30,
+    paddingLeft:30
   },
   actionButton2: {
-    height: 36,
-    padding: 8
+    height: 16,
+    padding: 8,
+    left:'auto',
+    textAlign:'center',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center'
   },
   actionText2: {
     color: "#000",
     opacity: 0.9,
-    fontSize: 14
+    fontSize: 40,
+    left:'auto',
+    textAlign:'center',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    paddingRight:30,
+    paddingLeft:30
   }
 });
 

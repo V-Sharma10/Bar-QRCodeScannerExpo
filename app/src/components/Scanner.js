@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Camera } from 'expo-camera';
 import * as Permissions from 'expo-permissions';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import { StyleSheet, Text, View, Button, BackHandler, Modal, Alert, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, Button, BackHandler, Modal, Alert, TouchableHighlight, AsyncStorage } from 'react-native';
 import Axios from 'axios'
 import ItemCard from './ItemCard';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,7 +16,8 @@ export default class Scanner extends Component {
             type: Camera.Constants.Type.back,
             scanned:false,
             modalVisible: false,
-            item:{}
+            item:{},
+            itemsArray:[]
             
         };
     }
@@ -30,6 +31,23 @@ export default class Scanner extends Component {
         console.log(this.state);
         // alert('Please reload this page ')
       })
+    }
+
+    addItemsToCart = (obj)=>{
+      console.log('req to add items to cart')
+      console.log(obj)
+      let arr = [...this.state.itemsArray,obj];
+      this.setState({
+        itemsArray:arr
+      },()=>{
+        AsyncStorage.setItem('cart', JSON.stringify(this.state.itemsArray))
+      .then(json => console.log('success!'))
+      .catch(error => console.log('error!'));
+
+      })
+      console.log(arr);
+      
+
     }
 
     setModalVisible(visible) {
@@ -126,6 +144,7 @@ export default class Scanner extends Component {
                   name = {this.state.item.name}
                   unit_price = {this.state.item.unit_price}
                   id = {this.state.item.id}
+                  addItemsArray={this.addItemsToCart}
                   >
 
                   </ItemCard>
