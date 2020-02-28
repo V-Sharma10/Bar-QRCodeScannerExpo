@@ -1,5 +1,3 @@
-node_modules/**/*
-api/app/node_modules/*
 api/app/build/*
 **/automation/**
 .expo/*
@@ -14,6 +12,7 @@ web-build/
 web-report/
 build/contracts/**
 .vscode
+node_modules/
 
 # macOS
 .DS_Store

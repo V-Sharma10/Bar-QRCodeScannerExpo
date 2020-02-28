@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Blank Template",
-    "slug": "lowes-scanner",
+    "name": "lowesScanner",
+    "slug": "lowesscanner",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/lowes_icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -26,8 +26,12 @@
     "ios": {
       "supportsTablet": true
     },
-    "android":{
-      "permissions":["CAMERA"]
-    }
+    "android": {
+      "permissions":["CAMERA"],
+      "package": "com.vsharma10.lowesScanner",
+      "versionCode": 2
+    },
+    "description": "",
+    "githubUrl": "https://github.com/V-Sharma10/Bar-QRCodeScannerExpo"
   }
 }

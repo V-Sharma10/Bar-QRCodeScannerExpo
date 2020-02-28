@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyboard } from 'react-native';
-
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, AsyncStorage, Keyboard, Button } from 'react-native';
+ 
 import {
     heightPercentageToDP as hp,
     widthPercentageToDP as wp
   } from "react-native-responsive-screen";
+// import Button from '../../../SIH/client/src/components/Button';
 
 
 
@@ -23,6 +24,7 @@ export default class Login extends Component {
         }
 
         this.saveData = this.saveData.bind(this);
+        this.handleGoogleSignin = this.handleGoogleSignin.bind(this)
     }
 
     saveData =  () =>{
@@ -60,6 +62,10 @@ export default class Login extends Component {
         //     console.error(error);
         //   });
   
+        }
+
+        handleGoogleSignin=()=>{
+            console.log('Google Signin Attempted')
         }
     
 
@@ -121,6 +127,19 @@ export default class Login extends Component {
                 </TouchableOpacity>
 
 
+                <View
+                style={{
+                  flex: 1,
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  
+                }}
+                >
+                   <Button title={'Google SignIn'} onPress={this.handleGoogleSignin}/>
+
+                </View>
+
+
             </View>
             
         )
@@ -131,7 +150,7 @@ const styles = StyleSheet.create({
     container: {
         // justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#171941" ,
+        backgroundColor: "#004990" ,
         flex :1
     },
     inputBox: {

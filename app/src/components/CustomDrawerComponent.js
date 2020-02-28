@@ -10,7 +10,13 @@ import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import Icon from "@expo/vector-icons/Ionicons";
 
 class CustomDrawerComponent extends Component {
-
+  constructor(props){
+    super(props)
+    this.state={
+      name:'Dummy',
+      imgsrc:'../../assets/profile.png'
+    }
+  }
 
   render() {
     return (
@@ -30,6 +36,60 @@ class CustomDrawerComponent extends Component {
             
           }}
         > */}
+
+
+
+
+
+<TouchableOpacity 
+              onPress={() => {
+                this.props.navigation.closeDrawer();
+                this.props.navigation.navigate("Profile");
+              }}
+               
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center"
+                }}
+              >
+                <View 
+                  style={{
+                    width: wp("20%"),
+                    height: wp("20%"),
+                    overflow: "hidden",
+                    borderRadius: wp("10%"),
+                    marginRight: wp("3%"),
+                    marginTop:60
+                  }}
+                >
+                  <Image
+                    source={require('../../assets/profile.png')}
+                    style={{
+                      flex: 1,
+                      width: null,
+                      height: null,
+                      resizeMode: "contain"
+                    }}
+                  />
+                </View>
+                <Text
+               
+                  style={{
+                    color: "black",
+                    fontSize: 24,
+                    fontWeight: "400",
+                    marginTop:60
+                  }}
+                >
+                  {this.state.name}
+                </Text>
+              </TouchableOpacity>
+
+
+
+
+
+
           <View
             style={{
               flex: 1,
@@ -39,29 +99,6 @@ class CustomDrawerComponent extends Component {
               paddingBottom: wp("7%")
             }}
           >
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center"
-              }}
-            >
-              <Text
-                style={{
-                  color: "white",
-                  fontSize: 20,
-                  fontWeight: "bold"
-                }}
-              >
-                Menu
-              </Text>
-              <Icon
-                onPress={() => this.props.navigation.closeDrawer()}
-                name="ios-close"
-                color="white"
-                size={50}
-              />
-            </View>
             <View
               style={{
                 flex: 2,
@@ -82,13 +119,13 @@ class CustomDrawerComponent extends Component {
                   paddingVertical: 5
                 }}
               >
-                <Icon name="ios-home" color="white" size={40} />
+                <Icon name="ios-home" color="white" size={35} />
                 <Text
                   style={{
                     color: "white",
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: "400",
-                    marginLeft: wp("4.5%")
+                    marginLeft: wp("3%")
                   }}
                 >
                   Home
@@ -106,13 +143,13 @@ class CustomDrawerComponent extends Component {
                   paddingVertical: 5
                 }}
               >
-                <Icon name="ios-search" color="white" size={40} />
+                <Icon name="ios-search" color="white" size={35} />
                 <Text
                   style={{
                     color: "white",
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: "400",
-                    marginLeft: wp("4.5%")
+                    marginLeft: wp("3%")
                   }}
                 >
                   Scan a Product
@@ -130,18 +167,50 @@ class CustomDrawerComponent extends Component {
                   paddingVertical: 5
                 }}
               >
-                <Icon name="ios-list-box" color="white" size={40} />
+                <Icon name="ios-list-box" color="white" size={35} />
                 <Text
                   style={{
                     color: "white",
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: "400",
-                    marginLeft: wp("4.5%")
+                    marginLeft: wp("3%")
                   }}
                 >
                   History
                 </Text>
               </TouchableOpacity>
+
+
+
+
+              {/* <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.closeDrawer();
+                  this.props.navigation.navigate("Untitled");
+                  console.log('Test')
+                }}
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  paddingVertical: 5
+                }}
+              >
+                <Icon name="ios-list-box" color="white" size={35} />
+                <Text
+                  style={{
+                    color: "white",
+                    fontSize: 20,
+                    fontWeight: "400",
+                    marginLeft: wp("3%")
+                  }}
+                >
+                  History
+                </Text>
+              </TouchableOpacity> */}
+
+
+
+
               
               {/* <TouchableOpacity
                 onPress={() => {
@@ -154,13 +223,13 @@ class CustomDrawerComponent extends Component {
                   paddingVertical: 5
                 }}
               >
-                <Icon name="ios-cart" color="white" size={40} />
+                <Icon name="ios-cart" color="white" size={35} />
                 <Text
                   style={{
                     color: "white",
-                    fontSize: 25,
+                    fontSize: 20,
                     fontWeight: "400",
-                    marginLeft: wp("4.5%")
+                    marginLeft: wp("3%")
                   }}
                 >
                   FAQ
@@ -174,47 +243,7 @@ class CustomDrawerComponent extends Component {
                 justifyContent: "flex-end"
               }}
             >
-              <TouchableOpacity 
-              onPress={() => {
-                this.props.navigation.closeDrawer();
-                this.props.navigation.navigate("Profile");
-              }}
-               
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center"
-                }}
-              >
-                <View 
-                  style={{
-                    width: wp("20%"),
-                    height: wp("20%"),
-                    overflow: "hidden",
-                    borderRadius: wp("10%"),
-                    marginRight: wp("4.5%")
-                  }}
-                >
-                  {/* <Image
-                    source={require("../../assets/reviewer.jpg")}
-                    style={{
-                      flex: 1,
-                      width: null,
-                      height: null,
-                      resizeMode: "contain"
-                    }}
-                  /> */}
-                </View>
-                <Text
-               
-                  style={{
-                    color: "white",
-                    fontSize: 25,
-                    fontWeight: "400"
-                  }}
-                >
-                  Account
-                </Text>
-              </TouchableOpacity>
+              
             </View>
           </View>
         {/* </ImageBackground> */}
