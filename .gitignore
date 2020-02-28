@@ -1,4 +1,5 @@
 api/app/build/*
+**/automation/**
 .expo/*
 npm-debug.*
 *.jks
