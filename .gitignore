@@ -1,4 +1,4 @@
-node_modules/**/*
+api/app/build/*
 .expo/*
 npm-debug.*
 *.jks
@@ -9,6 +9,9 @@ npm-debug.*
 *.orig.*
 web-build/
 web-report/
+build/contracts/**
+.vscode
+node_modules/
 
 # macOS
 .DS_Store

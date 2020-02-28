@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     container: {
         // justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#171941" ,
+        backgroundColor: "#004990" ,
         flex :1
     },
     inputBox: {

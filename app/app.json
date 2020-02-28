@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/lowes_icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -27,9 +27,7 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions": [
-        "CAMERA"
-      ],
+      "permissions":["CAMERA"],
       "package": "com.vsharma10.lowesScanner",
       "versionCode": 2
     },

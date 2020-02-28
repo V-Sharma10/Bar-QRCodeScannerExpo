@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@builderx/utils": "^0.1.6",
     "@react-native-community/datetimepicker": "^2.1.0",
     "expo": "^36.0.2",
     "expo-barcode-scanner": "^8.0.0",

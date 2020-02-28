@@ -24,6 +24,8 @@ import Cart from './src/Cart';
 import History from './src/History';
 import Profile from './src/Profile';
 import * as Font from 'expo-font';
+// import Untitled from './src/components/Untitled';
+import Login2 from './src/Login2';
 
 export default class App extends React.Component {
 
@@ -54,14 +56,16 @@ const HomeStackNavigator = createStackNavigator({
     screen: Home,
     navigationOptions: ({ navigation }) => {
       return {
-        headerTitle: "Home",
+        headerTitle: "Lowe's Scanner",
         headerTitleStyle: {
           color: "white",
-          fontFamily: 'bitter-italic'
+          fontFamily: 'bitter-italic',
+          textAlign: "center",
+          flex: 1
         },
         headerStyle: {
-          backgroundColor: "#171941"
-      
+          backgroundColor: "#004990",
+         
         },
         
         headerLeft: (
@@ -71,7 +75,7 @@ const HomeStackNavigator = createStackNavigator({
             color="white"
             size={30}
             style={{
-              paddingLeft: 10
+              paddingLeft: 25
             }}
           />
         ),
@@ -82,7 +86,7 @@ const HomeStackNavigator = createStackNavigator({
             color="white"
             size={30}
             style={{
-              paddingRight: 10
+              paddingRight: 25
             }}
           />
         )
@@ -100,7 +104,7 @@ const HomeStackNavigator = createStackNavigator({
               fontFamily: 'bitter-italic'
             },
             headerStyle: {
-              backgroundColor: "#171941"
+              backgroundColor: "#004990"
             },
             headerLeft: (
               <Icon
@@ -109,7 +113,7 @@ const HomeStackNavigator = createStackNavigator({
                 color="white"
                 size={30}
                 style={{
-                  paddingLeft: 10
+                  paddingLeft: 25
                 }}
               />
             ),
@@ -120,7 +124,7 @@ const HomeStackNavigator = createStackNavigator({
                 color="white"
                 size={30}
                 style={{
-                  paddingRight: 10
+                  paddingRight: 25
                 }}
               />
             )
@@ -138,7 +142,7 @@ const HomeStackNavigator = createStackNavigator({
               fontFamily: 'bitter-italic'
             },
             headerStyle: {
-              backgroundColor: "#171941"
+              backgroundColor: "#004990"
             },
             headerLeft: (
               <Icon
@@ -147,7 +151,7 @@ const HomeStackNavigator = createStackNavigator({
                 color="white"
                 size={30}
                 style={{
-                  paddingLeft: 10
+                  paddingLeft: 25
                 }}
               />
             ),
@@ -159,7 +163,7 @@ const HomeStackNavigator = createStackNavigator({
             //     color="white"
             //     size={30}
             //     style={{
-            //       paddingRight: 10
+            //       paddingRight: 25
             //     }}
             //   />
             // )
@@ -179,7 +183,7 @@ const HomeStackNavigator = createStackNavigator({
           fontFamily: 'bitter-italic'
         },
         headerStyle: {
-          backgroundColor: "#171941"
+          backgroundColor: "#004990"
         },
         headerLeft: (
           <Icon
@@ -188,7 +192,7 @@ const HomeStackNavigator = createStackNavigator({
             color="white"
             size={30}
             style={{
-              paddingLeft: 10
+              paddingLeft: 25
             }}
           />
         ),
@@ -200,7 +204,7 @@ const HomeStackNavigator = createStackNavigator({
         //     color="white"
         //     size={30}
         //     style={{
-        //       paddingRight: 10
+        //       paddingRight: 25
         //     }}
         //   />
         // )
@@ -218,7 +222,7 @@ const HomeStackNavigator = createStackNavigator({
         fontFamily: 'bitter-italic'
       },
       headerStyle: {
-        backgroundColor: "#171941" ,
+        backgroundColor: "#004990" ,
       },
       headerTitle: "Profile" ,
       headerLeft: null
@@ -229,7 +233,7 @@ const HomeStackNavigator = createStackNavigator({
       //   color="white"
       //   size={30}
       //   style={{
-      //     paddingLeft: 10
+      //     paddingLeft: 30
       //   }}
       // />
       // )
@@ -239,9 +243,9 @@ const HomeStackNavigator = createStackNavigator({
           onPress={() => { navigation.navigate("Home")} }
           name="ios-close"
           color="white"
-          size={50}
+          size={30}
           style={{
-            paddingRight: 10
+            paddingRight: 25
           }}
         />
       ),
@@ -249,7 +253,47 @@ const HomeStackNavigator = createStackNavigator({
     };
   }
 
- }
+ },
+
+
+//  Untitled: {
+//   screen: Untitled,
+//   navigationOptions: ({ navigation }) => {
+//     return {
+//       headerTitle: "Test" ,
+//       headerTitleStyle: {
+//         color: "white",
+//         fontFamily: 'bitter-italic'
+//       },
+//       headerStyle: {
+//         backgroundColor: "#004990"
+//       },
+//       headerLeft: (
+//         <Icon
+//           onPress={() => navigation.openDrawer()}
+//           name="md-menu"
+//           color="white"
+//           size={30}
+//           style={{
+//             paddingLeft: 25
+//           }}
+//         />
+//       ),
+//       headerRight: null
+//       // (
+//       //   <Icon
+//       //     onPress={() => navigation.navigate("Cart")}
+//       //     name="md-cart"
+//       //     color="white"
+//       //     size={30}
+//       //     style={{
+//       //       paddingRight: 25
+//       //     }}
+//       //   />
+//       // )
+//     };
+//   }
+// } ,
 
 })
   
@@ -279,7 +323,7 @@ const AppSwitchNavigator = createSwitchNavigator({
   //   screen: Register
   // },
   Login : {
-    screen : Login
+    screen : Login2
   },
   Home: {
     screen: HomeDrawNavigator
