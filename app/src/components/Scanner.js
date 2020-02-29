@@ -71,6 +71,9 @@ export default class Scanner extends Component {
       this.setState({scanned:true})
       // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
       try{
+        alert('Please wait searching for product')
+
+        try{
       const item = await Axios.get(`https://quiet-depths-08015.herokuapp.com/items/${data}`)
       console.log(item.data.item.id);
       
@@ -78,7 +81,10 @@ export default class Scanner extends Component {
       this.setState({
         modalVisible: !this.state.modalVisible,
         item:item.data.item
-      })
+      })}
+      catch(err){
+          alert('No product registered with this barcode/qrcode')
+      }
 
       
 
