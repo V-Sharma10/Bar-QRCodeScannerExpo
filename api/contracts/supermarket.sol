@@ -7,7 +7,7 @@ contract supermarket{
     event purchase_made(address, uint[], uint[], uint[], uint, uint, bool);
     
     constructor() public{
-        store = 0xa64A0F49d8Bb186b26C5577A5D419E0FF3dF067C;
+        store = 0xD9fc93401b9EA78eF7c235Ac05fDE93e74bF0752;
     }
     
     function make_purchase(uint[] memory _items, uint[] memory _unit_prices, uint[] memory _qty, uint _total )public payable{
