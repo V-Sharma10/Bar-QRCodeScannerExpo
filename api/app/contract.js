@@ -3,15 +3,17 @@ const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
 const artifact = require('./build/contracts/supermarket');
 
 module.exports = {
-    create_user: async function(){
-        
-    },
-    make_purchase: async function(items, prices, qty, total, account, callback){
+    make_purchase: async function(items, prices, qty, total, privateKey, callback){
         try{
             const networkId = await web3.eth.net.getId();
             const instance = new web3.eth.Contract(artifact.abi, artifact.networks[networkId].address);
 
-            const tx = await instance.methods.make_purchase(items, prices, qty, total).send({from: account, value: total});
+            let wallet = web3.eth.accounts.wallet.create();
+            wallet.clear();
+            wallet.add(privateKey);
+            console.log(wallet['0'].address);
+            
+            const tx = await instance.methods.make_purchase(items, prices, qty, total).send({from: wallet['0'].address, value: total, gas: 6000000});
             console.log(tx);
             return tx;
         }

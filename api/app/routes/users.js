@@ -6,7 +6,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
 
 router.post('/', async (req,res) => {
     try{
-        console.log("new user");
+        console.log("/newUser");
         let { id, password } = req.body;
         const newAccount = web3.eth.accounts.create();
         const { address, privateKey } = newAccount;
@@ -27,7 +27,7 @@ router.post('/', async (req,res) => {
 
 router.post('/checkBalance', async(req, res) => {
     try{
-        console.log("check balance");
+        console.log("/checkBalance");
         const { id } = req.body;
         const user = await users.find({id:id});
         // console.log(user);
@@ -53,13 +53,27 @@ router.post('/addBalance', async(req, res) => {
     try{
         console.log("/addBalance");
         const accounts = await web3.eth.getAccounts();
-        console.log(accounts);
+        // console.log(accounts);
         const { id, amount } = req.body;
-        console.log(id,amount);
-        res.status(200).json({
-            data: accounts,
-            status: "success"
-        })
+        // console.log(id,amount);
+        const user = await users.find({id:id});
+        const { address } = user[0];
+        // console.log(address);
+        const result = await web3.eth.sendTransaction({from:accounts[0],to:address, value:web3.utils.toWei(amount)});
+        // console.log(result);
+        if(result.status === true){
+            const balance = await web3.eth.getBalance(address);
+            res.status(200).json({
+                data: balance,
+                status: "success"
+            });
+        }
+        else{
+            res.status(500).json({
+                data: "error",
+                status: "failure"
+            });
+        }
     }
     catch(e){
         console.log(e);

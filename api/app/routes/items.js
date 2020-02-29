@@ -4,7 +4,7 @@ const items = require('../db/items');
 
 router.post('/', async (req,res) => {
     try{
-        console.log("new item");
+        console.log("/newItem");
         let { id, unit_price, name } = req.body;
         const newItem = await items.create({id, unit_price, name});
         res.status(201).json({
@@ -24,7 +24,7 @@ router.post('/', async (req,res) => {
 
 router.get('/:id', async(req,res) => {
     try{
-        console.log("get item");
+        console.log("/item/:id");
         const id = req.params.id;
         const item = await items.find({id});
 
