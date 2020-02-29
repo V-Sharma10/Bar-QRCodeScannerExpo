@@ -92,19 +92,7 @@ class ItemCard extends Component {
               marginLeft: 50
             }}
           >
-            <Ionicons
-              onPress={() => {
-                console.log("Added to cart");
-                console.log(this.state);
-
-                this.props.addItemsArray(this.state);
-
-                alert(`Your Product has been added to cart.`);
-              }}
-              name="md-cart"
-              size={60}
-              color="green"
-            />
+            
           </View>
         </View>
       </View>

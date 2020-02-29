@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
 import { BarCodeScanner } from "expo-barcode-scanner";
+
+// import { Ionicons } from "@expo/vector-icons";
 import {
   StyleSheet,
   Text,
@@ -30,16 +32,18 @@ class Scanner extends Component {
       item: {},
       itemsArray: []
     };
+    console.log('scanner')
+    console.log(this.props)
   }
   async componentDidMount() {
     const status = await Camera.requestPermissionsAsync();
-    console.log(status);
+    // console.log(status);
     this.setState(
       {
         hasPermission: status === "granted"
       },
       () => {
-        console.log(this.state);
+        // console.log(this.state);
         // alert('Please reload this page ')
       }
     );
@@ -47,8 +51,8 @@ class Scanner extends Component {
 
   addItemsToCart = obj => {
     // AsyncStorage.setItem('cart', JSON.stringify([]))
-    console.log("req to add items to cart");
-    console.log(obj);
+    // console.log("req to add items to cart");
+    // console.log(obj);
     //   AsyncStorage.getItem('cart')
     //     .then(req => JSON.parse(req))
     //   .then(json => {console.log('lkskdflkj'+json);
@@ -80,12 +84,12 @@ class Scanner extends Component {
     this.setState({ scanned: true });
     // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     try {
-
+      alert('Please wait while we fetch data of the scanned product')
       try{
         const item = await Axios.get(
           `https://quiet-depths-08015.herokuapp.com/items/${data}`
         );
-        console.log(item.data.item.id);
+        // console.log(item.data.item.id);
   
         // alert(`<View>${item.data.item.id}</View>`);
   
@@ -112,7 +116,7 @@ class Scanner extends Component {
       }
       
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       // alert('No product registered with this barcode/qrcode')
     }
   };
@@ -157,6 +161,19 @@ class Scanner extends Component {
           }}
           style={styles.modal}
         >
+          <Ionicons
+              onPress={() => {
+                // console.log("Added to cart");
+                // console.log(this.state);
+
+                this.props.navigation.navigate("Cart")
+                console.log('Redirect to Cart')
+                // alert(`Your Product has been added to cart.`);
+              }}
+              name="md-cart"
+              size={60}
+              color="black"
+            />
           <View style={{}}>
             <View
               style={{

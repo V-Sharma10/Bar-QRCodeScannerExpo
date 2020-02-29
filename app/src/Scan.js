@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import {View , Text} from 'react-native'
 import Scanner from './components/Scanner'
 export default class Scan extends Component {
+    constructor(props){
+        super(props)
+    }
     render() {
         return (
             <View
@@ -11,7 +14,7 @@ export default class Scan extends Component {
               justifyContent: 'flex-end',
               
             }}>
-                <Scanner/>  
+                <Scanner navigation={this.props.navigation}/>  
             </View>
         )
     }
