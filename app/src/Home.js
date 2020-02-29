@@ -5,7 +5,7 @@ export default class Home extends Component {
     constructor(props){
         super(props)
         this.state={
-            url:'http://192.168.43.25:3000/items/'
+            url:'https://quiet-depths-08015.herokuapp.com/'
         }
     }
 
