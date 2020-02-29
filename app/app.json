@@ -27,9 +27,8 @@
       "supportsTablet": true
     },
     "android": {
-      "permissions": ["READ_EXTERNAL_STORAGE","WRITE_EXTERNAL_STORAGE"],
       "package": "com.vsharma10.lowesScanner",
-      "versionCode": 2
+      "versionCode": 3
     },
     "description": "",
     "githubUrl": "https://github.com/V-Sharma10/Bar-QRCodeScannerExpo"

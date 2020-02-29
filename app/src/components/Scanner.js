@@ -71,7 +71,7 @@ export default class Scanner extends Component {
       this.setState({scanned:true})
       // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
       try{
-      const item = await Axios.get(`http://192.168.43.25:3000/items/${data}`)
+      const item = await Axios.get(`https://quiet-depths-08015.herokuapp.com/items/${data}`)
       console.log(item.data.item.id);
       
       // alert(`<View>${item.data.item.id}</View>`);

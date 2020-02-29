@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 22533,
   "expoServerNgrokUrl": "https://jw-a78.viveksharma.app.exp.direct",
   "packagerNgrokUrl": "https://packager.jw-a78.viveksharma.app.exp.direct",
-  "ngrokPid": 24937
+  "ngrokPid": 22581
 }
