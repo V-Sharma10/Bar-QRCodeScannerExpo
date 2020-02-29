@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
+ 
 
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import {
@@ -37,6 +37,8 @@ export default class App extends React.Component {
       'bitter-italic': require('./assets/fonts/Bitter/Bitter-Italic.ttf'),
       'bitter-regular': require('./assets/fonts/Bitter/Bitter-Regular.ttf'),
     });
+
+    // AsyncStorage.setItem('isCartEmpty',true)
   }
 
   render(){
