@@ -3,6 +3,6 @@
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "4b-muc",
+  "urlRandomness": null,
   "https": false
 }

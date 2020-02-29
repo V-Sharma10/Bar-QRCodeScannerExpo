@@ -80,29 +80,37 @@ class Scanner extends Component {
     this.setState({ scanned: true });
     // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     try {
-      const item = await Axios.get(
-        `https://quiet-depths-08015.herokuapp.com/items/${data}`
-      );
-      console.log(item.data.item.id);
 
-      // alert(`<View>${item.data.item.id}</View>`);
+      try{
+        const item = await Axios.get(
+          `https://quiet-depths-08015.herokuapp.com/items/${data}`
+        );
+        console.log(item.data.item.id);
+  
+        // alert(`<View>${item.data.item.id}</View>`);
+  
+        let Prdocutmodel = {
+          itemId: data,
+          price: item.data.item.unit_price,
+          name: item.data.item.name
+        };
+  
+        this.props.addItem(Prdocutmodel);
+  
+        console.log("====================");
+        console.log(this.props.cart);
+        console.log("====================");
+  
+        this.setState({
+          modalVisible: !this.state.modalVisible,
+          item: item.data.item
+        });
 
-      let Prdocutmodel = {
-        itemId: data,
-        price: item.data.item.unit_price,
-        name: item.data.item.name
-      };
-
-      this.props.addItem(Prdocutmodel);
-
-      console.log("====================");
-      console.log(this.props.cart);
-      console.log("====================");
-
-      this.setState({
-        modalVisible: !this.state.modalVisible,
-        item: item.data.item
-      });
+      }
+      catch(err){
+        alert('No Product with the Scanned Barcode/QRcode found')
+      }
+      
     } catch (err) {
       console.log(err);
       // alert('No product registered with this barcode/qrcode')
