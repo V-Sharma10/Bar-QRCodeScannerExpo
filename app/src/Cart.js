@@ -11,7 +11,8 @@ class Cart extends Component {
         super(props)
         this.state={
             cartArr:{},
-            disable:false
+            disable:false,
+            username:''
         }
         console.log('cart jkajshdkfjhkashd')
         console.log(this.props.cart)
@@ -32,6 +33,13 @@ class Cart extends Component {
     //   .catch(error => console.log('error!'));
     }
     proceedToPay = async() =>{
+        const user = await AsyncStorage.getItem('username').then((res)=>{
+            console.log("sdfasdfas "+res);
+            this.setState({
+                username:res
+            })
+        })
+
         console.log('make payment');
         // console.log(this.props.cart);
         let items=[],qty = [];
@@ -62,7 +70,7 @@ class Cart extends Component {
 
             try{
                 const payment = await Axios.post(`https://quiet-depths-08015.herokuapp.com/orders/makePurchase/`,{
-                "id":"user@example.com",
+                "id":"Vivek",
                 "items":items,
                "qty":qty
             })
@@ -74,6 +82,7 @@ class Cart extends Component {
             }
             catch(err){
                 alert('Payment Failed.. Please add the items again and try again')
+                console.log(err)
             }
 
             

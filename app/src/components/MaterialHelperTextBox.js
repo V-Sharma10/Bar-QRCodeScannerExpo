@@ -1,14 +1,37 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
 
-function MaterialHelperTextBox(props) {
+class MaterialHelperTextBox extends Component {
+    constructor(props){
+      super(props)
+      this.state={
+        usernameField:''
+      }
+    }
+
+    handleOnChange=(e)=>{
+      // console.log(e)
+      // console.log()
+      this.props.UserNameEmpty(e.nativeEvent.text)
+    }
+    AddUsername=(e)=>{
+      // console.log(e.nativeEvent.text)
+      
+    }
+
+  render(){
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={[styles.container, this.props.style]}>
       <Text style={styles.label}></Text>
-      <TextInput placeholder="Username" style={styles.inputStyle}></TextInput>
-      <Text style={styles.helper}>Enter your username</Text>
+      <TextInput 
+      placeholder="Username"
+       style={styles.inputStyle}
+       onChange={this.handleOnChange}
+      //  onBlur={this.AddUsername}
+       ></TextInput>
+      <Text style={styles.helper}>Enter user@exmaple.com for proceeding further. Password can be anything.</Text>
     </View>
-  );
+  );}
 }
 
 const styles = StyleSheet.create({
@@ -38,7 +61,7 @@ const styles = StyleSheet.create({
     color: "#000",
     opacity: 0.6,
     paddingTop: 8,
-    fontSize: 12,
+    fontSize: 10,
     textAlign: "left"
   }
 });

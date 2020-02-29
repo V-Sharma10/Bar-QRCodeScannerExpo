@@ -1,13 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, Text } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 function MaterialRightIconTextbox(props) {
   return (
+    // <View>
     <View style={[styles.container, props.style]}>
       <TextInput placeholder="Password" secureTextEntry={true} style={styles.inputStyle}></TextInput>
       <Icon name="eye" style={styles.iconStyle}></Icon>
+     
     </View>
+    // <Text style={styles.helper}>Enter user@exmaple.com for proceeding further</Text>
+    // {/* </View> */}
   );
 }
 
@@ -34,6 +38,13 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
     fontSize: 24,
     paddingRight: 8
+  },
+  helper: {
+    color: "#000",
+    opacity: 0.6,
+    paddingTop: 8,
+    fontSize: 12,
+    textAlign: "left"
   }
 });
 

@@ -1,16 +1,19 @@
 import React, { Component } from "react";
-import { StyleSheet, TouchableOpacity, Text } from "react-native";
+import { StyleSheet, TouchableOpacity, Text, AsyncStorage } from "react-native";
 
 function LoginButton(props) {
   
   return (
     <TouchableOpacity style={[styles.container, props.style]}
-
-    onPress={()=>{
+      onPress={()=>{
       console.log('Login clicked')
       console.log(props.username + " " + props.password);
       props.navigation.navigate("Home");
+      AsyncStorage.setItem('username',props.username).then(()=>{
+        console.log(props.username);
+      })
     }}
+    disabled={props.isUsernameEmpty}
     >
       <Text style={styles.caption}>Login</Text>
     </TouchableOpacity>

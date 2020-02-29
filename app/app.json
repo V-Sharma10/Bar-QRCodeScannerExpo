@@ -28,7 +28,7 @@
     },
     "android": {
       "package": "com.vsharma10.lowesScanner",
-      "versionCode": 3
+      "versionCode": 4
     },
     "description": "",
     "githubUrl": "https://github.com/V-Sharma10/Bar-QRCodeScannerExpo"

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import {View, Text, Image, SafeAreaView, ScrollView, StyleSheet } from 'react-native'
+import {View, Text, Image, SafeAreaView, ScrollView, StyleSheet,AsyncStorage } from 'react-native'
 import Axios from 'axios'
 export default class History extends Component {
     constructor(props){
         super(props)
         this.state={
             HistoryArr:[],
-            loading:true
+            loading:true,
+            username:''
         }
 
     }
@@ -15,33 +16,59 @@ export default class History extends Component {
         this.setState({
             loading:true
         })
-        const getHistory = await Axios.post(`https://quiet-depths-08015.herokuapp.com/orders/getHistory/`,{
-            "id": "user@example.com"
-        })
-        this.setState({
-            loading:false,
-            HistoryArr:getHistory.data.data
-        },()=>{
-            console.log('getHistory completed ')
-            console.log(this.state.HistoryArr)
-        })
-        console.log('jkdfkjhas')
+        try{
+            const user = await AsyncStorage.getItem('username').then((res)=>{
+                console.log("sdfasdfas "+res);
+                this.setState({
+                    username:res
+                },
+                ()=>{
+                    console.log( "dfdfgsosdhjgun "+ this.state.username)
+                })
+            }) 
+            console.log(user)
+        }
+        catch(err){
+            alert('It seems you are not logged in... Please login to proceed')
+        }
+       
+        try{
+            console.log(this.state.username)
+            const getHistory = await Axios.post(`https://quiet-depths-08015.herokuapp.com/orders/getHistory/`,{
+                "id": this.state.username
+            })
+            this.setState({
+                loading:false,
+                HistoryArr:getHistory.data.data
+            },()=>{
+                console.log('getHistory completed ')
+                console.log(this.state.HistoryArr)
+            })
+            console.log('jkdfkjhas')
+    
+        //     for(let i in this.state.HistoryArr)
+        //     {
+        //     console.log(this.state.HistoryArr[i].items);
+        //     console.log(this.state.HistoryArr[i].unit_prices);
+        //     console.log(this.state.HistoryArr[i].qty);
+        //     console.log(this.state.HistoryArr[i].total);
+        //     console.log('new item')
+        // }
+          
 
-        for(let i in this.state.HistoryArr)
-        {
-        console.log(this.state.HistoryArr[i].items);
-        console.log(this.state.HistoryArr[i].unit_prices);
-        console.log(this.state.HistoryArr[i].qty);
-        console.log(this.state.HistoryArr[i].total);
-        console.log('new item')
-    }
-        
+        }
+        catch(err){
+            alert('History cannot be fetched.')
+        }
+         
     }
     
     render() {
         return (
             
-            <View>
+            <View
+            style={{flex:1}}
+            >
                 {this.state.loading?
                 // <Image
                 //     source={require('../assets/loader.png')} 
@@ -63,7 +90,7 @@ export default class History extends Component {
                 :
 
                 <SafeAreaView style={styles.container}>
-                <ScrollView style={styles.scrollView}>git 
+                <ScrollView style={styles.scrollView}>
                 <View>
 
                     {this.state.HistoryArr.map((element,index)=>{
@@ -109,9 +136,8 @@ export default class History extends Component {
                     })}
 
                 </View>
-
-</ScrollView>
-</SafeAreaView>
+            </ScrollView>
+            </SafeAreaView>
 
                 }
             </View>

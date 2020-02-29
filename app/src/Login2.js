@@ -13,19 +13,36 @@ class Login2 extends Component {
     this.state={
       username:'',
       password:'',
+      isUsernameEmpty:true
     }
     console.log(props)
   }
+
+  handleLogin=()=>{
+
+  }
+  UserNameEmpty = (e)=>{
+    // console.log()
+    console.log("parent Component   " + e);
+    this.setState({
+      username:e,
+      isUsernameEmpty:false
+    })
+  }
+
   render(){
   return (
     <View style={styles.container}>
+      
       <View style={styles.rect}></View>
       <View style={styles.rect2}></View>
       {/* <View
       style={{flex:1,}}
       > */}
+     
       <MaterialHelperTextBox
         style={styles.materialHelperTextBox}
+        UserNameEmpty = {this.UserNameEmpty}
       ></MaterialHelperTextBox>
       <MaterialRightIconTextbox
         style={styles.materialRightIconTextbox}
@@ -37,6 +54,9 @@ class Login2 extends Component {
         password="pass"
         style={styles.materialButtonViolet}
         navigation={this.props.navigation}
+        handleLogin = {this.handleLogin}
+        isUsernameEmpty={this.state.isUsernameEmpty}
+        username={this.state.username}
       ></LoginButton>
 
 
