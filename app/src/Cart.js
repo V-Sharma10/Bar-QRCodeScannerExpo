@@ -154,14 +154,24 @@ class Cart extends Component {
                                             alert('All items dropped.')
                                         })
 
-                                        // await AsyncStorage.setItem('cart',JSON.stringify([]))
-                                        return true;
-                                    }
-                                    catch(exception) {
-                                        return false;
-                                    }
-                                }}
-                            />
+        <View>
+          {cartArray.length !== 0 ? (
+            <Button
+              title="Clear Cart"
+              onPress={async () => {
+                console.log("cart clearing attempted");
+                try {
+                  // await AsyncStorage.removeItem('cart');
+                  // await AsyncStorage.setItem('isCartEmpty',true)
+                  this.props.clearCart();
+                  this.setState(
+                    {
+                      cartArr: []
+                    },
+                    () => {
+                      alert("All items dropped.");
+                    }
+                  );
 
                             
                             :<Text>No Items in cart</Text>} */}

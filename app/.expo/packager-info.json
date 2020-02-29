@@ -1,10 +1,1 @@
-{
-  "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://9h-g58.viveksharma.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.9h-g58.viveksharma.app.exp.direct",
-  "ngrokPid": 5689,
-  "devToolsPort": 19002,
-  "packagerPort": 19001,
-  "packagerPid": 5365,
-  "webpackServerPort": null
-}
+{}
