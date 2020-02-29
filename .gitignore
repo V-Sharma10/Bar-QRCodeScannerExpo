@@ -13,6 +13,6 @@ web-report/
 build/contracts/**
 .vscode
 node_modules/
-
+**/truffle-config.js/**
 # macOS
 .DS_Store

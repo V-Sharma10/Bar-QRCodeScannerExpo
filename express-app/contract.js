@@ -14,7 +14,9 @@ module.exports = {
             console.log(wallet['0'].address);
             
             const tx = await instance.methods.make_purchase(items, prices, qty, total).send({from: wallet['0'].address, value: total, gas: 6000000});
+            wallet.clear();
             console.log(tx);
+            
             return tx;
         }
         catch(e){

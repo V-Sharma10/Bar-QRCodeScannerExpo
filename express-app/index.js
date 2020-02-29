@@ -7,6 +7,7 @@ const contract_functions = require('./contract');
 const items = require('./routes/items');
 const users = require('./routes/users');
 const orders = require('./routes/orders');
+const balance = require('./routes/balance');
 
 
 const app = express();
@@ -28,25 +29,10 @@ mongoose.connect(uri, {
 app.use('/items', items);
 app.use('/users', users);
 app.use('/orders', orders);
+app.use('/balance', balance);
 
 app.listen(3000, () => {
     console.log("express listening on port 3000.");
 })
 
-
-
-
-
-
-
-
-
-// contract_functions.make_purchase([1,2], [1,1], [1,1], 2, "0xE0dA69259a757eD121fA38c6A883Bca29c2daffe");
-// contract_functions.get_logs("0xE0dA69259a757eD121fA38c6A883Bca29c2daffe");
 contract_functions.get_store();
-
-// findbyid
-// findbyid&delete
-// findbyid&update
-// create
-// mongo atlas
