@@ -1,6 +1,8 @@
 const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/63f56f544f644afeaad7744c534d426a'));
 const artifact = require('./build/contracts/supermarket');
+
+web3.eth.getBalance("0xC9F877150c704724646c8EEedb30A04c0FbB84FD").then(console.log);
 
 module.exports = {
     make_purchase: async function(items, prices, qty, total, privateKey, callback){
@@ -14,7 +16,9 @@ module.exports = {
             console.log(wallet['0'].address);
             
             const tx = await instance.methods.make_purchase(items, prices, qty, total).send({from: wallet['0'].address, value: total, gas: 6000000});
+            wallet.clear();
             console.log(tx);
+            
             return tx;
         }
         catch(e){
