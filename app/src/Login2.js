@@ -6,7 +6,7 @@ import LoginButton from "./components/LoginButton";
 import SignUpButton from "./components/SignUpButton";
 import GoogleSignInButton from "./components/GoogleSignInButton";
 import { render } from "react-dom";
-
+// import from ''
 class Login2 extends Component {
   constructor(props){
     super(props);
@@ -21,13 +21,16 @@ class Login2 extends Component {
     <View style={styles.container}>
       <View style={styles.rect}></View>
       <View style={styles.rect2}></View>
+      {/* <View
+      style={{flex:1,}}
+      > */}
       <MaterialHelperTextBox
         style={styles.materialHelperTextBox}
       ></MaterialHelperTextBox>
       <MaterialRightIconTextbox
         style={styles.materialRightIconTextbox}
       ></MaterialRightIconTextbox>
-
+      {/* </View> */}
 
       <LoginButton
         username='name'
@@ -64,7 +67,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(15,15, 15,1)",
     borderRadius: 26,
     borderColor: "#000000",
-    borderWidth: 0
+    borderWidth: 0,
+    textAlign:'center',
+   
   },
   rect: {
     flex: 0.3,
@@ -76,22 +81,36 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.01
   },
   materialHelperTextBox: {
+    flex:1,
     top: 270,
-    left: 46,
-    width: 272,
+    // left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    width: '100%',
     height: 90,
-    position: "absolute"
+    position: "absolute",
+    // padding:20
   },
   materialRightIconTextbox: {
+    flex:1,
     top: 381,
-    left: 46,
-    width: 272,
+    left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
+    width: '100%',
     height: 54,
-    position: "absolute"
+    position: "absolute",
+    // padding:20
   },
   materialButtonViolet: {
+    flex:1,
     top: 481,
-    left: 130,
+    left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
     width: 100,
     height: 36,
     backgroundColor: "rgba(0,73,144,1)",
@@ -107,6 +126,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10
   },
   forgotPassword: {
+    flex:1,
     top: 451,
     left: 150,
     width: 98,
@@ -117,8 +137,9 @@ const styles = StyleSheet.create({
     // fontFamily: "roboto-regular"
   },
   clickHere: {
+    flex:1,
     top: 451,
-    left: 248,
+    left: 260,
     width: 70,
     height: 18,
     color: "rgba(61,65,210,1)",
@@ -128,17 +149,25 @@ const styles = StyleSheet.create({
   },
   or4: {
     top: 182,
-    left: 169,
+    left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
     width: 24,
     height: 24,
     color: "rgba(255,255,255,1)",
     position: "absolute",
     fontSize: 18,
+    flex:1,
     // fontFamily: "roboto-regular"
   },
   materialButtonPink: {
+    flex:1,
     top: 584,
-    left: 64,
+    left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
     width: 242,
     height: 36,
     position: "absolute",
@@ -151,8 +180,12 @@ const styles = StyleSheet.create({
     shadowRadius: 10
   },
   materialButtonShare: {
+    flex:1,
     top: 70,
-    left: 138,
+    left: 'auto',
+    alignContent:'center',
+    alignItems:'center',
+    alignSelf:'center',
     width: 85,
     height: 82,
     position: "absolute"

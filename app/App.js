@@ -26,6 +26,7 @@ import Profile from './src/Profile';
 import * as Font from 'expo-font';
 // import Untitled from './src/components/Untitled';
 import Login2 from './src/Login2';
+// import CustomDrawerComponent2 from './src/components/CustomDrawerComponent2';
 
 export default class App extends React.Component {
 
