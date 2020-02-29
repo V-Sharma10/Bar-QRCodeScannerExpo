@@ -74,17 +74,18 @@ export default class Scanner extends Component {
         alert('Please wait searching for product')
 
         try{
-      const item = await Axios.get(`https://quiet-depths-08015.herokuapp.com/items/${data}`)
-      console.log(item.data.item.id);
-      
-      // alert(`<View>${item.data.item.id}</View>`);
-      this.setState({
-        modalVisible: !this.state.modalVisible,
-        item:item.data.item
-      })}
-      catch(err){
-          alert('No product registered with this barcode/qrcode')
-      }
+            const item = await Axios.get(`https://quiet-depths-08015.herokuapp.com/items/${data}`)
+            console.log(item.data.item.id);
+            
+            // alert(`<View>${item.data.item.id}</View>`);
+            this.setState({
+              modalVisible: !this.state.modalVisible,
+              item:item.data.item
+            })
+        }
+        catch(err){
+            alert('No product registered with this barcode/qrcode')
+        }
 
       
 
