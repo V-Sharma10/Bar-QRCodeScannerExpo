@@ -1,9 +1,6 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 2851,
-  "expoServerNgrokUrl": "https://9h-rr7.viveksharma.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.9h-rr7.viveksharma.app.exp.direct",
-  "ngrokPid": 2887
+  "expoServerPort": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

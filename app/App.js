@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, AsyncStorage } from 'react-native';
- 
+import configureStore from "./src/store/configureStore.js";
+import { Provider } from "react-redux";
 
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import {
@@ -42,8 +43,11 @@ export default class App extends React.Component {
   }
 
   render(){
+      const store = configureStore();
       return (
-             <AppContainer />
+             <Provider store={store}>
+        <AppContainer />
+      </Provider>
     
         
       );
