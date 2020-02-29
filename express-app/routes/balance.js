@@ -4,9 +4,7 @@ const users = require('../db/users');
 const Web3 = require('web3');
 const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/63f56f544f644afeaad7744c534d426a'));
 const privateKey = "0x07fae8b4200886cd15a977b60b0633f3e3bf1877f655f3fbbc7f5e6988acc0e5";
-const wallet = web3.eth.accounts.wallet.create();
-wallet.clear();
-wallet.add(privateKey);
+const myAccount = web3.eth.accounts.privateKeyToAccount(privateKey);
 
 
 router.post('/checkBalance', async(req, res) => {
@@ -16,8 +14,9 @@ router.post('/checkBalance', async(req, res) => {
         const user = await users.find({id:id});
         const { address } = user[0];
         const balance = await web3.eth.getBalance(address);
+        const balanceHumanReadable = web3.utils.fromWei(balance)*1000;
         res.status(200).json({
-            balance: balance,
+            balance: balanceHumanReadable,
             status: "success"
         });
     }
@@ -37,21 +36,22 @@ router.post('/addBalance', async(req, res) => {
         const { id, amount } = req.body;
         const user = await users.find({id:id});
         const { address } = user[0];
-        console.log(wallet[0].address, address);
-        const result = await web3.eth.sendTransaction(
-            {
-                from: wallet[0].address, to:address, 
-                value: web3.utils.toWei(amount),
-                gas: 6000000,
-                // nonce: Math.floor(Math.random()*1000000)
-                nonce: 50000
-            });
+        const tx = {
+            from: myAccount.address,
+            value: web3.utils.toWei((amount/1000).toString()),
+            to: address,
+            gas: 6000000
+        };
+        const signedTx = await myAccount.signTransaction(tx);
+        const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
         console.log(result);
+        web3.eth.getBalance("0xC9F877150c704724646c8EEedb30A04c0FbB84FD").then(console.log);
         if(true){
-            const balance = await web3.eth.getBalance(wallet[0].address);
-            console.log(wallet[0].address, balance);
+            const balance = await web3.eth.getBalance(address);
+            const balanceHumanReadable = web3.utils.fromWei(balance)*1000;
             res.status(200).json({
-                data: balance,
+                newBalance: balanceHumanReadable,
+                result,
                 status: "success"
             });
         }

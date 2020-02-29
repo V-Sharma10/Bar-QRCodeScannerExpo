@@ -5,7 +5,7 @@ const getPrices = require('../helpers/getPrices');
 const contract = require('../contract');
 
 const router = express.Router();
-const web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:9545'));
+const web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/63f56f544f644afeaad7744c534d426a'));
 
 const storeAddress = "0xD9fc93401b9EA78eF7c235Ac05fDE93e74bF0752";
 
@@ -15,6 +15,10 @@ router.post('/makePurchase', async(req,res) => {
         const { id, items, qty} = req.body;
         
         var unit_prices = await getPrices(items);
+        unit_prices = unit_prices.map( p => {
+            return web3.utils.toWei((p/1000).toString());
+        });
+        console.log(unit_prices);
         let total = 0;
         items.forEach((val, idx) => {
             total += unit_prices[idx]*qty[idx];
@@ -23,7 +27,7 @@ router.post('/makePurchase', async(req,res) => {
         const document = await users.find({id:id});
         const { address, privateKey } = document[0];
 
-        const result = await contract.make_purchase(items, unit_prices, qty, total, privateKey);
+        const result = await contract.make_purchase(items, unit_prices, qty, total.toString(), privateKey);
 
         res.status(200).json({
             data: result,
