@@ -2,15 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-<<<<<<< HEAD
-  "packagerPid": 4068,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
-=======
-  "packagerPid": 22533,
-  "expoServerNgrokUrl": "https://jw-a78.viveksharma.app.exp.direct",
-  "packagerNgrokUrl": "https://packager.jw-a78.viveksharma.app.exp.direct",
-  "ngrokPid": 22581
->>>>>>> 79a073fed386642f3f5acb468cf2749c89c7741d
+  "packagerPid": 1448,
+  "expoServerNgrokUrl": "https://4b-muc.anonymous.app.exp.direct",
+  "packagerNgrokUrl": "https://packager.4b-muc.anonymous.app.exp.direct",
+  "ngrokPid": 3876
 }
