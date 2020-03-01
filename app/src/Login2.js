@@ -13,7 +13,8 @@ class Login2 extends Component {
     this.state={
       username:'',
       password:'',
-      isUsernameEmpty:true
+      isUsernameEmpty:true,
+      toSignUp:false,
     }
     console.log(props)
   }
@@ -63,7 +64,8 @@ class Login2 extends Component {
       <Text style={styles.forgotPassword}>Forgot Password?</Text>
       <Text 
       style={styles.clickHere}
-      onPress={()=>{console.log('Forgot Password Called')}}
+      onPress={()=>{
+        console.log('Forgot Password Called')}}
       >
         Click Here</Text>
       <Text style={styles.or4}>OR</Text>
@@ -71,6 +73,9 @@ class Login2 extends Component {
 
       <SignUpButton
         style={styles.materialButtonPink}
+        onPress={()=>{
+
+        }}
       ></SignUpButton>
       
 

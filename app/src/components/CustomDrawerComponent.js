@@ -4,10 +4,13 @@ import {
   Text,
   ImageBackground,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Button,
+  AsyncStorage
 } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import Icon from "@expo/vector-icons/Ionicons";
+// import Login2 from "../Login";
 
 class CustomDrawerComponent extends Component {
   constructor(props){
@@ -243,7 +246,21 @@ class CustomDrawerComponent extends Component {
                 justifyContent: "flex-end"
               }}
             >
-              
+
+              <Icon
+              style={{
+                left:'auto',
+                alignItems:'center',
+                alignSelf:'center',
+                textAlign:'center',
+                // marginLeft:'auto'
+              }}
+              onPress={async()=>{
+                const logout = await AsyncStorage.removeItem('username')
+                this.props.navigation.navigate("Login")
+              }}
+              name="ios-log-out" color="red" size={45} />
+
             </View>
           </View>
         {/* </ImageBackground> */}
