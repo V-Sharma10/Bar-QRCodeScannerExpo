@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     textAlign: "left"
   },
   inputStyle: {
-    width: 375,
+    // width: 375,
     flex: 1,
     color: "#000",
     alignSelf: "stretch",
@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
     borderColor: "#D9D5DC",
     borderBottomWidth: 1,
     fontSize: 16,
-    lineHeight: 16
+    lineHeight: 16,
+    paddingLeft:10,
+    paddingRight:10
   },
   helper: {
     color: "#000",

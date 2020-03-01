@@ -21,7 +21,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderColor: "#D9D5DC",
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    marginBottom:10,
+    marginRight:10,
+    marginLeft:10,
+    marginTop:10
+
   },
   inputStyle: {
     flex: 1,

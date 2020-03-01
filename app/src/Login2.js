@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text , TextInput, TouchableOpacity} from "react-native";
 import MaterialHelperTextBox from "./components/MaterialHelperTextBox";
 import MaterialRightIconTextbox from "./components/MaterialRightIconTextbox";
 import LoginButton from "./components/LoginButton";
 import SignUpButton from "./components/SignUpButton";
 import GoogleSignInButton from "./components/GoogleSignInButton";
 import { render } from "react-dom";
+
+import Icon from "@expo/vector-icons/Ionicons";
+import { Button } from "native-base";
+import Axios from "axios";
 // import from ''
 class Login2 extends Component {
   constructor(props){
@@ -15,13 +19,49 @@ class Login2 extends Component {
       password:'',
       isUsernameEmpty:true,
       toSignUp:false,
+      signupUsername:'',
+      signupPassword:''
     }
     console.log(props)
   }
+  handleSignUp =async () => {
+    console.log(this.state.signupPassword +" "+ this.state.signupUsername);
+    alert('Please wait... ')
+
+    try{
+    const adduser = await Axios.post('https://quiet-depths-08015.herokuapp.com/users/register',{
+      "id": this.state.signupUsername,
+      "password": this.state.signupPassword
+    })
+    console.log(adduser);
+    
+    this.setState({
+      toSignUp:false,
+    })
+    console.log(this.props)
+  }
+  catch(err){
+    alert('Signup Failed... Try Again')
+  }
+}
+
+  handleOnChangeUsername = (e)=>{
+    console.log(e.nativeEvent.text)
+    this.setState({
+      signupUsername:e.nativeEvent.text
+    })
+  }
+  handleOnChangePassword = (e)=>{
+    console.log(e.nativeEvent.text)
+    this.setState({
+      signupPassword:e.nativeEvent.text
+    })
+  }
 
   handleLogin=()=>{
-
+    
   }
+
   UserNameEmpty = (e)=>{
     // console.log()
     console.log("parent Component   " + e);
@@ -31,11 +71,18 @@ class Login2 extends Component {
     })
   }
 
+  toSignUp = () =>{
+    this.setState({
+      toSignUp:true
+    })
+  }
   render(){
   return (
     <View style={styles.container}>
-      
-      <View style={styles.rect}></View>
+      {this.state.toSignUp===false? 
+        <View style={styles.container}>
+
+        <View style={styles.rect}></View>
       <View style={styles.rect2}></View>
       {/* <View
       style={{flex:1,}}
@@ -73,15 +120,79 @@ class Login2 extends Component {
 
       <SignUpButton
         style={styles.materialButtonPink}
-        onPress={()=>{
-
-        }}
+        toSignUp={this.toSignUp}
       ></SignUpButton>
       
 
       <GoogleSignInButton
         style={styles.materialButtonShare}
       ></GoogleSignInButton>
+      </View>
+      :<View
+      style={{
+        flex:1,
+          backgroundColor:'white',
+          textAlign:'center',
+
+          marginTop:100,
+          // alignContent:'center',
+          alignSelf:'center',
+          alignItems:'center',
+          left:'auto',
+          width:'100%'
+        }}
+      >
+       
+        <Text
+        style={{
+          color:'black',
+          fontSize:24,
+        }}
+        >
+             Signup{'\n'}
+        </Text>
+        <TextInput 
+      placeholder="Username"
+       style={styles.inputStyle}
+       onChange={this.handleOnChangeUsername}
+      //  onBlur={this.AddUsername}
+       ></TextInput>
+       <TextInput 
+      placeholder="Password"
+       style={styles.inputStyle}
+       secureTextEntry={true}
+       onChange={this.handleOnChangePassword}
+      //  onBlur={this.AddUsername}
+       ></TextInput>
+       <TouchableOpacity 
+          style={styles.container2}
+          onPress={()=>{
+            console.log('SignUp clicked in signup component');
+            
+            this.handleSignUp()
+          }}
+
+          >
+            <Text 
+            style={styles.caption}
+            >Sign Up</Text>
+    </TouchableOpacity>
+       <Icon name="ios-home" color="green" size={35}
+       style={{
+         flex:1,
+         marginTop:'80%'
+       }}
+        onPress={
+          ()=>{
+              this.setState({
+                toSignUp:false
+              })
+          }
+        }
+      />
+      </View>}
+      
+      
     </View>
   );}
 }
@@ -214,7 +325,49 @@ const styles = StyleSheet.create({
     width: 85,
     height: 82,
     position: "absolute"
-  }
+  },
+  inputStyle: {
+    // width: 375,
+    // flex: 1,
+    color: "#000",
+    alignSelf: "stretch",
+    paddingTop: 8,
+    paddingBottom: 8,
+    borderColor: "#D9D5DC",
+    borderBottomWidth: 1,
+    fontSize: 16,
+    lineHeight: 16,
+    marginBottom:10,
+    marginTop:10,
+    marginRight:10,
+    marginLeft:10,
+  },
+  caption: {
+    color: "pink",
+    fontSize: 18,
+    backgroundColor: 'transparent'
+  },
+  container2: {
+    backgroundColor: "#E91E63",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingRight: 26,
+    paddingLeft: 26,
+    elevation: 2,
+    minWidth: 88,
+    borderRadius: 72,
+    paddingTop:16,
+    paddingBottom:16,
+    marginTop:10,
+    shadowOffset: {
+      height: 5,
+      width: 5
+    },
+    shadowColor: "#fff",
+    shadowOpacity: 0.35,
+    shadowRadius: 5
+  },
 });
 
 export default Login2;

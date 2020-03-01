@@ -15,10 +15,23 @@ import Icon from "@expo/vector-icons/Ionicons";
 class CustomDrawerComponent extends Component {
   constructor(props){
     super(props)
+   
+
     this.state={
-      name:'Dummy',
-      imgsrc:'../../assets/profile.png'
+      name:'',
+      imgsrc:'../../assets/profile.png',
+
     }
+  }
+
+  async componentDidMount(){
+    const user = await  AsyncStorage.getItem('username').then((res)=>{
+      console.log(res)
+      this.setState({
+        name:res
+      })
+     
+    })
   }
 
   render() {

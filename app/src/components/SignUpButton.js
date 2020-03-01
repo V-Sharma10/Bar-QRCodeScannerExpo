@@ -7,7 +7,9 @@ function SignUpButton(props) {
     style={[styles.container, props.style]}
     onPress={()=>{
       console.log('SignUp clicked');
+      props.toSignUp()
     }}
+
     >
       <Text 
       style={styles.caption}

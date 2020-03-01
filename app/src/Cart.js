@@ -69,8 +69,9 @@ class Cart extends Component {
             alert('Your Payment is Being Processed. Please bear with us... This may take some time')
 
             try{
+                console.log('paying '+ this.state.username)
                 const payment = await Axios.post(`https://quiet-depths-08015.herokuapp.com/orders/makePurchase/`,{
-                "id":"Vivek",
+                "id":this.state.username,
                 "items":items,
                "qty":qty
             })
@@ -81,7 +82,7 @@ class Cart extends Component {
 
             }
             catch(err){
-                alert('Payment Failed.. Please add the items again and try again')
+                alert('Payment Failed.. Please check your balance and try again')
                 console.log(err)
             }
 

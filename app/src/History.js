@@ -128,7 +128,7 @@ export default class History extends Component {
 
                                 
                                     Total: ₹ {element.total/10**15}{'\n'}
-                                    Time Of Purchase: {Date(element.timeOfPurchase)}
+                                    {/* Time Of Purchase: {Date(element.timeOfPurchase)} */}
                                 
                                 </Text>
                             </View>
