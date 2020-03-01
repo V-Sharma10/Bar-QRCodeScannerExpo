@@ -10,6 +10,7 @@ function GoogleSignInButton(props) {
       console.log(
         'Google SignIn Attempted'
       )
+      alert('Plese Regsiter & use Credentials')
     }}
     >
       <Icon name="google" style={styles.icon}></Icon>

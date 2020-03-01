@@ -13,6 +13,7 @@ export default class History extends Component {
     }
 
     async componentDidMount(){
+        alert('Please bear with us till the request is followed through...')
         this.setState({
             loading:true
         })
