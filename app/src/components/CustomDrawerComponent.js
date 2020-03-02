@@ -6,7 +6,9 @@ import {
   Image,
   TouchableOpacity,
   Button,
-  AsyncStorage
+  AsyncStorage,
+  ScrollView,
+  SafeAreaView
 } from "react-native";
 import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 import Icon from "@expo/vector-icons/Ionicons";
@@ -36,6 +38,12 @@ class CustomDrawerComponent extends Component {
 
   render() {
     return (
+      <SafeAreaView
+        style={{
+          flex:1,
+          flexDirection:'column'
+        }}
+      >
       <View
         style={{
           flex: 1 
@@ -92,9 +100,9 @@ class CustomDrawerComponent extends Component {
                
                   style={{
                     color: "black",
-                    fontSize: 24,
+                    fontSize: 14,
                     fontWeight: "400",
-                    marginTop:60
+                    marginTop:60,
                   }}
                 >
                   {this.state.name}
@@ -105,7 +113,14 @@ class CustomDrawerComponent extends Component {
 
 
 
-
+              {/* <ScrollView
+        style={{
+          // flex:1,
+          // flexDirection:'column',
+          height:'100%'
+         
+        }}
+      > */}
           <View
             style={{
               flex: 1,
@@ -260,24 +275,28 @@ class CustomDrawerComponent extends Component {
               }}
             >
 
-              <Icon
+              
+
+            </View>
+          </View>
+          {/* </ScrollView> */}
+          <Icon
               style={{
                 left:'auto',
                 alignItems:'center',
                 alignSelf:'center',
                 textAlign:'center',
-                // marginLeft:'auto'
+                // marginLeft:'auto',
+                // marginTop:'100%',
               }}
               onPress={async()=>{
                 const logout = await AsyncStorage.removeItem('username')
                 this.props.navigation.navigate("Login")
               }}
               name="ios-log-out" color="red" size={45} />
-
-            </View>
-          </View>
         {/* </ImageBackground> */}
       </View>
+      </SafeAreaView>
     );
   }
 }

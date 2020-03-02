@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {View, Text,AsyncStorage} from 'react-native'
+import {View, Text,AsyncStorage, SafeAreaView, ScrollView} from 'react-native'
 import { Button } from 'native-base';
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from "react-redux";
@@ -102,6 +102,20 @@ class Cart extends Component {
         }
 
         return (
+
+            <SafeAreaView
+                    style={{
+                        flex:1,
+                    }}
+                >
+                    <ScrollView
+                    style={{
+                        // flex:1,
+                        // marginHorizontal: 20,
+                        backgroundColor: 'transparent',
+                         marginHorizontal: 20,
+                    }}
+                    >
             <View
             style={{
                 flex:1,
@@ -238,6 +252,8 @@ class Cart extends Component {
                         </View>
                         </View>
             </View>
+            </ScrollView>
+            </SafeAreaView>
         )
     }
 }

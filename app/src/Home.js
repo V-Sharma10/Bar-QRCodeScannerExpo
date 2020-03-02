@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text,SafeAreaView } from 'native-base'
-import { AsyncStorage } from 'react-native'
+import { View, Text, } from 'native-base'
+import { AsyncStorage, SafeAreaView, ScrollView  } from 'react-native'
 export default class Home extends Component {
 
     constructor(props){
@@ -25,11 +25,32 @@ export default class Home extends Component {
 
     render() {
         return (
-            <View>
+            
+
+            
+          
+                <SafeAreaView
+                    style={{
+                        flex:1,
+                    }}
+                >
+                    <ScrollView
+                    style={{
+                        // flex:1,
+                        // marginHorizontal: 20,
+                        backgroundColor: 'transparent',
+                         marginHorizontal: 20,
+                    }}
+                    >
+                        <View
+                         style={{
+                            flex:1,
+                        }}
+                        >
                 <Text
                     style={{
                         textAlign:'center',
-                        fontSize:26,
+                        fontSize:22,
                         marginTop:25
                     }}
                 >
@@ -66,9 +87,14 @@ export default class Home extends Component {
                         >
                             {'\n\n\n'}
                             Note that the server and the blockchain has been hosted on different free test servers so it takes a bit of time for the servers to process. So please bear with us due to that.
+
+
                         </Text>
                 </Text>
-            </View>
+                </View>
+                </ScrollView>
+                </SafeAreaView>
+     
         )
     }
 }
